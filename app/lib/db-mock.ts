@@ -10,12 +10,10 @@ async function delay(ms: number) {
 }
 
 export async function fetchRevenue() {
-    await delay(200);
     return revenue
 }
 
 export async function fetchLatestInvoices(): Promise<LatestInvoice[]> {
-    await delay(1000);
     const latestInvoices: LatestInvoice[] = [];
 
     invoices.forEach((invoice) => {
@@ -37,8 +35,6 @@ export async function fetchLatestInvoices(): Promise<LatestInvoice[]> {
 }
 
 export async function fetchCardData() {
-    await delay(250);
-
     const numberOfInvoices = invoices.length;
     const numberOfCustomers = customers.length;
     let totalPaidInvoicesAmount = 0;
@@ -63,8 +59,6 @@ export async function fetchFilteredInvoices(
     query: string,
     currentPage: number,
 ): Promise<InvoicesTable[]> {
-    await delay(500);
-
     const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
     const latestInvoices: InvoicesTable[] = [];
@@ -90,11 +84,7 @@ export async function fetchFilteredInvoices(
     return latestInvoices.filter(t => t.name.includes(query)).slice(offset, offset + ITEMS_PER_PAGE);
 }
 
-export async function fetchInvoicesPages(
-    query: string,
-) {
-    await delay(500);
-
+export async function fetchInvoicesPages() {
     const totalPages = Math.ceil(invoices.length / ITEMS_PER_PAGE);
     return totalPages
 }
@@ -102,22 +92,14 @@ export async function fetchInvoicesPages(
 export async function fetchInvoiceById(
     id: string,
 ) {
-    await delay(500);
-
     return invoices.map(t => t.id == id);
 }
 
 export async function fetchCustomers() {
-    await delay(500);
-
     return customers
 }
 
-export async function fetchFilteredCustomers(
-    query: string,
-) {
-    await delay(500);
-
+export async function fetchFilteredCustomers() {
     const customersTable: CustomersTableType[] = [];
 
     customers.forEach(c => {
