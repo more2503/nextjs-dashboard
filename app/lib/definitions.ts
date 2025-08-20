@@ -86,3 +86,15 @@ export type InvoiceForm = {
   amount: number;
   status: 'pending' | 'paid';
 };
+
+
+// mg
+export type Event = {
+  id: number
+  name: string
+  location: number
+  accounting_status: number
+  item_config: number[]
+  station_config: number[]
+  date: string
+};
